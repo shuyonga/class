@@ -17,7 +17,7 @@
 
 👉 [https://github.com/shuyonga/class/releases/latest](https://github.com/shuyonga/class/releases/latest)
 
-下载 `数王荣耀.exe`（文件名为 `shuyonga-class.exe`）后双击即可运行，无需单独安装 Python。
+下载 `数王荣耀.exe`（文件名为 `shuwangrongyao.exe`）后双击即可运行，无需单独安装 Python。
 
 ## 支持的 AI 模型
 
