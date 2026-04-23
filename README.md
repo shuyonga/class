@@ -11,9 +11,41 @@
 - AI 辅助分析常见错误
 - 备课-上课一体化流程
 
-## 安装依赖
+## 下载地址
 
-手动安装：
+免安装版（Windows exe）下载：
+
+👉 [https://github.com/shuyonga/class/releases/latest](https://github.com/shuyonga/class/releases/latest)
+
+下载 `数王荣耀.exe` 后双击即可运行，无需单独安装 Python。
+
+## 支持的 AI 模型
+
+系统支持在「模型配置」页面同时配置最多 5 个模型，任选其一启用：
+
+| 模型 | Base URL 示例 | 说明 |
+|------|--------------|------|
+| DeepSeek | `https://api.deepseek.com` | 推理能力强，响应较快 |
+| MiniMax | `https://api.minimaxi.com/v1` | 国内访问稳定 |
+| 智谱 GLM | `https://open.bigmodel.cn/api/paas/v4` | GLM-4 系列 |
+| 豆包（字节） | `https://ark.cn-beijing.volces.com/api/v3` | 火山方舟接入 |
+| Kimi（月之暗面） | `https://api.moonshot.cn/v1` | 长上下文 |
+
+> 本项目仅接入国内 AI 模型，不使用任何境外模型。
+
+## 克隆仓库后配置步骤（开发者）
+
+```bash
+git clone https://github.com/shuyonga/class.git
+cd class
+copy config.example.json config.json
+```
+
+然后编辑 `config.json`，在对应模型的 `api_key` 字段填入自己申请的 Key，并把该模型的 `enabled` 设为 `true`。
+
+> `config.json` 已在 `.gitignore` 中，不会被提交到仓库，API Key 不会泄露。
+
+## 安装依赖（源码运行）
 
 ```bash
 pip install flask requests qrcode[pil]
@@ -37,11 +69,11 @@ python app.py
 |------|------|------|
 | 学生端 | `http://{IP}:5050/student` | 学生平板访问，提交答案与理解程度 |
 | 教师大屏端 | `http://{IP}:5050/teacher` | 希沃大屏使用，整合备课与上课功能，通过 Tab 切换 |
-| 配置页面 | `http://{IP}:5050/config` | 设置 AI 模型的 API Key 及参数 |
+| 模型配置 | `http://{IP}:5050/config` | 设置 AI 模型的 API Key 及参数 |
 
 ## 首次使用流程
 
-1. **配置模型**：在 `/config` 页面填写至少一个 AI 模型的完整信息（API Key、Base URL、Model Identifier）并勾选启用，然后保存
+1. **配置模型**：在「模型配置」页面填写至少一个 AI 模型的完整信息（API Key、Base URL、Model Identifier）并勾选启用，然后保存
 2. **创建题目包**：在教师端「备课模式」Tab 中，输入题目包名称，点击「新建」，逐题添加题目后保存
 3. **上课使用**：切换到「上课模式」Tab，选择已保存的题目包并加载，点击题目旁的「发布」按钮发布当前题目
 4. **学生提交**：学生通过平板访问学生端（或扫描二维码），输入答案和选择理解程度后提交
