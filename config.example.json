@@ -1,0 +1,40 @@
+{
+  "models": [
+    {
+      "display_name": "MiniMax",
+      "api_key": "",
+      "base_url": "https://api.minimaxi.com/v1",
+      "model_id": "MiniMax-M2.7-highspeed",
+      "enabled": true
+    },
+    {
+      "display_name": "",
+      "api_key": "",
+      "base_url": "",
+      "model_id": "",
+      "enabled": false
+    },
+    {
+      "display_name": "",
+      "api_key": "",
+      "base_url": "",
+      "model_id": "",
+      "enabled": false
+    },
+    {
+      "display_name": "",
+      "api_key": "",
+      "base_url": "",
+      "model_id": "",
+      "enabled": false
+    },
+    {
+      "display_name": "",
+      "api_key": "",
+      "base_url": "",
+      "model_id": "",
+      "enabled": false
+    }
+  ],
+  "secret_key": ""
+}

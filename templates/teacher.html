@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>数王荣耀 - 教师端</title>
+    <link rel="stylesheet" href="/static/style.css">
+</head>
+<body>
+    <div class="teacher-container">
+        <!-- Left Panel: Teacher Operations -->
+        <div class="teacher-left">
+            <div class="tab-bar">
+                <button class="tab-btn" id="tabPrep" onclick="switchTab('prep')">备课模式</button>
+                <button class="tab-btn active" id="tabTeach" onclick="switchTab('teach')">上课模式</button>
+            </div>
+            <div class="tab-content">
+                <!-- Tab 1: Prep Mode -->
+                <div class="tab-panel" id="panelPrep">
+                    <div class="section-card" id="prepCreateSection">
+                        <h3>备课 · 新建题目包</h3>
+                        <input type="text" class="input-field" id="packageNameInput" placeholder="请输入题目包名称">
+                        <button class="btn btn-primary" onclick="createPackage()">新建</button>
+                    </div>
+
+                    <div class="section-card" id="prepEditSection" style="display:none;">
+                        <h3>逐题录入</h3>
+                        <select class="select-field" id="questionTypeSelect">
+                            <option value="口算">口算</option>
+                            <option value="填空题">填空题</option>
+                            <option value="选择题">选择题</option>
+                            <option value="判断题">判断题</option>
+                            <option value="笔算">笔算</option>
+                            <option value="应用题">应用题</option>
+                        </select>
+                        <input type="text" class="input-field" id="questionContentInput" placeholder="请输入题目内容">
+                        <button class="btn btn-primary" onclick="addQuestion()">添加</button>
+                    </div>
+
+                    <div class="section-card" id="prepPreviewSection" style="display:none;">
+                        <h3>当前题目列表</h3>
+                        <ul class="question-list" id="prepQuestionList"></ul>
+                        <div style="margin-top:12px;">
+                            <button class="btn btn-success" onclick="savePackage()">保存题目包</button>
+                        </div>
+                    </div>
+
+                    <div class="section-card">
+                        <h3>加载已有题目包</h3>
+                        <select class="select-field" id="loadPackageSelect">
+                            <option value="">-- 请选择 --</option>
+                        </select>
+                        <button class="btn btn-warning" onclick="loadPackage()">加载</button>
+                    </div>
+                    <div class="app-footer">© 2026 徐殊老师设计制作 | v1.0.0</div>
+                </div>
+
+                <!-- Tab 2: Teach Mode -->
+                <div class="tab-panel active" id="panelTeach">
+                    <div class="section-card">
+                        <h3>选择题目包</h3>
+                        <select class="select-field" id="teachPackageSelect" onchange="onTeachPackageChange()">
+                            <option value="">-- 请选择 --</option>
+                        </select>
+                        <button class="btn btn-primary" onclick="loadTeachPackage()">加载</button>
+                    </div>
+
+                    <div class="section-card" id="teachQuestionSection" style="display:none;">
+                        <h3>题目列表（点击发布）</h3>
+                        <ul class="publish-list" id="teachQuestionList"></ul>
+                    </div>
+
+                    <div class="section-card">
+                        <h3>课堂控制</h3>
+                        <div class="submit-count">
+                            已提交人数：<strong id="submitCount">0</strong>
+                        </div>
+                        <div class="btn-row">
+                            <button class="btn btn-danger" onclick="clearRound()">清空本轮数据</button>
+                        </div>
+                    </div>
+
+                    <div class="section-card">
+                        <h3>AI 分析</h3>
+                        <select class="select-field" id="modelSelect" onchange="onModelChange()">
+                            <option value="">-- 请选择模型 --</option>
+                        </select>
+                        <div class="btn-row">
+                            <button class="btn btn-primary" onclick="aiAnalyze()">AI分析</button>
+                        </div>
+                        <div class="ai-result" id="aiResult" style="display:none;"></div>
+                    </div>
+
+                    <div style="margin-top:12px; text-align:center;">
+                        <a href="/config" class="nav-link" target="_blank">前往配置页</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Right Panel: Display Area (fixed, always visible) -->
+        <div class="teacher-right">
+            <div class="display-question" id="displayQuestion">
+                <div class="no-question" id="displayNoQuestion">等待发布题目</div>
+                <div id="displayQuestionContent" style="display:none;">
+                    <span class="dq-type" id="displayQType"></span>
+                    <div class="dq-content" id="displayQContent"></div>
+                </div>
+            </div>
+
+            <div class="understanding-stats" id="understandingStats">
+                <div class="stat-block stat-understood">
+                    <div class="stat-count" id="statUnderstood">0</div>
+                    <div class="stat-label">懂了</div>
+                </div>
+                <div class="stat-block stat-partial">
+                    <div class="stat-count" id="statPartial">0</div>
+                    <div class="stat-label">有点懂</div>
+                </div>
+                <div class="stat-block stat-confused">
+                    <div class="stat-count" id="statConfused">0</div>
+                    <div class="stat-label">没懂</div>
+                </div>
+            </div>
+
+            <div class="answers-section">
+                <h3>学生答案</h3>
+                <div class="answers-list" id="answersList"></div>
+            </div>
+
+            <div class="qrcode-area">
+                <img src="/qrcode.png" alt="QR Code">
+                <div class="qr-label">学生扫码入口</div>
+            </div>
+        </div>
+    </div>
+    <script src="/static/teacher.js"></script>
+</body>
+</html>

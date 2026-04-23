@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>数王荣耀 - 学生端</title>
+    <link rel="stylesheet" href="/static/style.css">
+</head>
+<body>
+    <div class="student-container">
+        <div class="student-card">
+            <h1>👑 数王荣耀</h1>
+            <div id="questionArea">
+                <div class="waiting-msg" id="waitingMsg">等待老师发布题目</div>
+                <div class="question-display" id="questionDisplay" style="display:none;">
+                    <span class="q-type" id="qType"></span>
+                    <div class="q-content" id="qContent"></div>
+                </div>
+            </div>
+            <div id="answerArea" style="display:none;">
+                <input type="text" class="answer-input" id="answerInput" placeholder="在此输入你的答案">
+                <div class="understanding-group" id="understandingGroup">
+                    <label class="u-understood" id="labelUnderstood">
+                        <input type="radio" name="understanding" value="understood">
+                        <span>懂了</span>
+                    </label>
+                    <label class="u-partial" id="labelPartial">
+                        <input type="radio" name="understanding" value="partial">
+                        <span>有点懂</span>
+                    </label>
+                    <label class="u-confused" id="labelConfused">
+                        <input type="radio" name="understanding" value="confused">
+                        <span>没懂</span>
+                    </label>
+                </div>
+                <button class="submit-btn" id="submitBtn" disabled>提交</button>
+                <div class="submitted-msg" id="submittedMsg">✅ 已收到，等待老师发布下一题</div>
+            </div>
+        </div>
+    </div>
+    <div class="app-footer">© 2026 徐殊老师设计制作 | v1.0.0</div>
+    <script src="/static/student.js"></script>
+</body>
+</html>
