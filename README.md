@@ -83,10 +83,13 @@ python app.py
 ## Windows 打包说明
 
 1. 将整个项目文件夹拷贝到 Windows 电脑
-2. 双击 `build_windows.bat` 等待自动安装依赖并打包
-3. 打包完成后在 `dist` 文件夹中找到 `数王荣耀.exe`
-4. 将 `dist/数王荣耀.exe` 复制到项目根目录（或任意位置），双击即可运行
-5. 程序会自动创建缺失的 `data/` 和 `questions/` 目录
+2. 把仓库里的 `config.example.json` 复制一份改名为 `config.json`，填入自己的 AI 模型 API Key（不要用公共的）
+3. 双击 `build_windows.bat` 等待自动安装依赖并打包
+4. 打包完成后在 `dist` 文件夹中找到 `shuwangrongyao.exe`
+5. 将 `dist\shuwangrongyao.exe` 复制到项目根目录（或任意位置），双击即可运行
+6. 首次运行程序会自动在 exe 同级目录生成新的 `config.json`，并创建 `data\` 和 `questions\` 目录
+
+> ⚠️ 打包脚本**不会**把你的 `config.json` 嵌入 exe，API Key 绝不会被打包分发。
 
 ## 注意事项
 

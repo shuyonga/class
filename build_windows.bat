@@ -14,13 +14,15 @@ pip install flask requests "qrcode[pil]" pyinstaller
 
 echo.
 echo [3/3] 正在打包（这可能需要几分钟）...
-pyinstaller --add-data "templates;templates" --add-data "static;static" --add-data "config.json;." --add-data "questions;questions" --add-data "data;data" --onefile --name "数王荣耀" --icon="icon.ico" app.py
+pyinstaller --add-data "templates;templates" --add-data "static;static" --onefile --name "shuwangrongyao" --icon="icon.ico" app.py
 
 echo.
 echo ============================================
 echo   打包完成！
-echo   可执行文件位于 dist\数王荣耀.exe
+echo   可执行文件位于 dist\shuwangrongyao.exe
 echo   请将 exe 复制到项目根目录后运行
+echo   首次运行会自动在 exe 同级目录生成 config.json
+echo   并自动创建 data\ 和 questions\ 目录
 echo ============================================
 echo.
 pause
